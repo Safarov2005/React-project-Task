@@ -32,7 +32,12 @@ function App() {
   const clearList = () => {
     showAlert(true, "danger","заметка было полностью очищенa" )
     setList([]);
+  };
+  const removeItem = (id) => {
+    showAlert(true, "danger", "заметка было удалина");
+    setList(list.filter((item) => item.id !== id));
   }
+
 
   return (
     <section className='section-center'>
@@ -55,7 +60,7 @@ function App() {
     </form>
     {list.length > 0 && (
        <div className='grocery-container'>
-      <List items={list}/>
+      <List items={list} removeItem={removeItem}/>
       <button onClick={clearList} className='clear-btn'>
       очистить
       </button>
